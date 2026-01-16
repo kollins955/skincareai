@@ -1,0 +1,44 @@
+import streamlit as st
+from PIL import Image
+import numpy as np
+
+# Page config
+st.set_page_config(page_title="SkincareAI", page_icon="??")
+
+# Title
+st.title("? SkincareAI")
+st.subheader("AI-powered skin analysis for personalized care")
+
+# Upload image
+uploaded_file = st.file_uploader(
+    "Upload a clear photo of your skin (face or affected area)",
+    type=["jpg", "jpeg", "png"]
+)
+
+if uploaded_file is not None:
+    # Display image
+    image = Image.open(uploaded_file)
+    st.image(image, caption="Uploaded Skin Image", use_column_width=True)
+    
+    # Simulate AI analysis (replace later with real model)
+    with st.spinner("Analyzing your skin..."):
+        # Placeholder logic
+        condition = "Dryness & Mild Acne"
+        recommendations = [
+            "Use a gentle hydrating cleanser",
+            "Apply non-comedogenic moisturizer",
+            "Avoid harsh exfoliants",
+            "Consider products with hyaluronic acid"
+        ]
+    
+    # Show results
+    st.success(f"Detected: *{condition}*")
+    st.write("### Recommended Care:")
+    for rec in recommendations:
+        st.write(f"- {rec}")
+    
+    st.info("?? Note: This is a demo. Real AI analysis requires a trained model.")
+
+# Footer
+st.markdown("---")
+st.caption("Made with ?? for healthier skin | Project by kollins955")
